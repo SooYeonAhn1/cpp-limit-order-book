@@ -2,26 +2,29 @@
 #define ORDER_BOOK_HPP
 
 #include <map>
-#include <cstdlib>
+#include <list>
+#include <utility>
 #include <cstdint>
+#include <functional>
 
 class OrderBook {
 public:
-    struct Order {
-        uint32_t id;
-        double price;
-        int quantity;
-    };
     enum class OrderType {
         BUY,
         SELL,
     };
-    OrderBook();
-    ~OrderBook();
-    void matchOrder(Order order, OrderType type);
+    struct Order {
+        uint32_t id;
+        double price;
+        int quantity;
+        OrderType type;
+    };
+    OrderBook() = default;
+    ~OrderBook() = default;
+    void matchOrder(Order& order);
     void addOrder(uint32_t id, double price, int quantity, OrderType type);
 private:
-    std::map<int, std::pair<double, int>> bidBook;
-    std::map<int, std::pair<double, int>> askBook;
+    std::map<double, std::list<Order>> asks;
+    std::map<double, std::list<Order>, std::greater<double>> bids;
 };
 #endif // ORDER_BOOK_HPP

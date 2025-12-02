@@ -8,7 +8,7 @@ This project implements a standard **Price-Time Priority** matching algorithm. I
 ## Key Features
 * **Order Matching:** Real-time matching of Bids and Asks using standard FIFO logic.
 * **Data Structures:** Utilizes `std::map` (Red-Black Tree) for O(log n) price level management and `std::list` for order time priority.
-* **Modern C++:** Implements strict type safety with `enum class` and memory management via smart pointers.
+* **Modern C++:** Implements strict type safety with `enum class` and memory management via smart pointers if necessary.
 
 ## Running the program
 First clone the repository and change directory to the cloned repository
