@@ -7,8 +7,8 @@ void OrderBook::matchOrder(Order& order) {
         auto it = asks.begin();
         while (order.quantity > 0 && it != asks.end() && it -> first <= order.price) {
             while (order.quantity > 0 && !it -> second.empty()) {
-                int qty = it -> second.front().quantity;
-                int minQty = std::min(qty, order.quantity);
+                long long qty = it -> second.front().quantity;
+                long long minQty = std::min(qty, order.quantity);
                 it -> second.front().quantity -= minQty;
                 order.quantity -= minQty;
                 if (it -> second.front().quantity == 0) {
@@ -25,8 +25,8 @@ void OrderBook::matchOrder(Order& order) {
         auto it = bids.begin();
         while (order.quantity > 0 && it != bids.end() && it -> first >= order.price) {
             while (order.quantity > 0 && !it -> second.empty()) {
-                int qty = it -> second.front().quantity;
-                int minQty = std::min(qty, order.quantity);
+                long long qty = it -> second.front().quantity;
+                long long minQty = std::min(qty, order.quantity);
                 it -> second.front().quantity -= minQty;
                 order.quantity -= minQty;
                 if (it -> second.front().quantity == 0) {
@@ -42,7 +42,7 @@ void OrderBook::matchOrder(Order& order) {
     }
 }
 
-void OrderBook::addOrder(uint32_t id, double price, int quantity, OrderType type) {
+void OrderBook::addOrder(uint32_t id, double price, long long quantity, OrderType type) {
     Order order = {id, price, quantity, type};
     matchOrder(order);
     

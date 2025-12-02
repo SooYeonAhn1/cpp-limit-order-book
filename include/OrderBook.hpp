@@ -16,13 +16,13 @@ public:
     struct Order {
         uint32_t id;
         double price;
-        int quantity;
+        long long quantity;
         OrderType type;
     };
     OrderBook() = default;
     ~OrderBook() = default;
     void matchOrder(Order& order);
-    void addOrder(uint32_t id, double price, int quantity, OrderType type);
+    void addOrder(uint32_t id, double price, long long quantity, OrderType type);
 private:
     std::map<double, std::list<Order>> asks;
     std::map<double, std::list<Order>, std::greater<double>> bids;
