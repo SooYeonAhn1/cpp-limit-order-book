@@ -9,7 +9,7 @@ static std::mt19937 gen(rd());
 static std::normal_distribution<> price_dist(100.00, 0.1);
 static std::uniform_int_distribution<long long> qty_dist(1, 1000);
 
-Order generate_random_order(uint32_t id_counter, double mid_price) {
+Order generateRandomOrder(uint32_t id_counter, double mid_price) {
     // decide price
     double price = price_dist(gen);
     price = std::round(price * 100.0) / 100.0;
