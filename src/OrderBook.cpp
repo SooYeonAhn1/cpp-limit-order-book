@@ -3,12 +3,11 @@
 #include <algorithm>
 
 void OrderBook::matchOrder(Order& order) {
-    if (order.type == OrderBook::OrderType::BUY) {
+    if (order.type == OrderType::BUY) {
         auto it = asks.begin();
         while (order.quantity > 0 && it != asks.end() && it -> first <= order.price) {
             while (order.quantity > 0 && !it -> second.empty()) {
-                long long qty = it -> second.front().quantity;
-                long long minQty = std::min(qty, order.quantity);
+                long long minQty = std::min(it -> second.front().quantity, order.quantity);
                 it -> second.front().quantity -= minQty;
                 order.quantity -= minQty;
                 if (it -> second.front().quantity == 0) {
@@ -25,8 +24,7 @@ void OrderBook::matchOrder(Order& order) {
         auto it = bids.begin();
         while (order.quantity > 0 && it != bids.end() && it -> first >= order.price) {
             while (order.quantity > 0 && !it -> second.empty()) {
-                long long qty = it -> second.front().quantity;
-                long long minQty = std::min(qty, order.quantity);
+                long long minQty = std::min(it -> second.front().quantity, order.quantity);
                 it -> second.front().quantity -= minQty;
                 order.quantity -= minQty;
                 if (it -> second.front().quantity == 0) {
@@ -47,7 +45,7 @@ void OrderBook::addOrder(uint32_t id, double price, long long quantity, OrderTyp
     matchOrder(order);
     
     if (order.quantity > 0) {
-        if (type == OrderBook::OrderType::BUY) {
+        if (type == OrderType::BUY) {
             bids[order.price].emplace_back(order);
         } else {
             asks[order.price].emplace_back(order);

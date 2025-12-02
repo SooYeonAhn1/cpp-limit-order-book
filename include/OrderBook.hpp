@@ -1,6 +1,8 @@
 #ifndef ORDER_BOOK_HPP
 #define ORDER_BOOK_HPP
 
+#include "Order.hpp"
+
 #include <map>
 #include <list>
 #include <utility>
@@ -9,16 +11,6 @@
 
 class OrderBook {
 public:
-    enum class OrderType {
-        BUY,
-        SELL,
-    };
-    struct Order {
-        uint32_t id;
-        double price;
-        long long quantity;
-        OrderType type;
-    };
     OrderBook() = default;
     ~OrderBook() = default;
     void matchOrder(Order& order);
