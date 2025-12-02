@@ -10,5 +10,24 @@ This project implements a standard **Price-Time Priority** matching algorithm. I
 * **Data Structures:** Utilizes `std::map` (Red-Black Tree) for O(log n) price level management and `std::list` for order time priority.
 * **Modern C++:** Implements strict type safety with `enum class` and memory management via smart pointers.
 
+## Running the program
+First clone the repository and change directory to the cloned repository
+```
+$ git clone https://github.com/SooYeonAhn1/cpp-limit-order-book
+$ cd cpp-limit-order-book
+```
+
+Enter the build directory
+```
+$ cd build
+```
+
+Run the following commands
+```
+$ cmake ..
+$ make
+$ ./obExec
+```
+
 ## References
 * Logic based on standard limit order book architecture (e.g., QuantStart, market microstructure literature).
