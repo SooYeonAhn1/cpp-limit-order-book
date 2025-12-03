@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(obExec
     main.cpp
     src/OrderBook.cpp
+    src/Utility.cpp
 )
 
 target_include_directories(obExec PUBLIC
