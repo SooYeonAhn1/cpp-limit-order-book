@@ -12,6 +12,12 @@
 
 class OrderBook {
 public:
+    struct BookDepth {
+        size_t bid_price_levels;
+        long long bid_total_volume;
+        size_t ask_price_levels;
+        long long ask_total_volume;
+    };
     OrderBook() = default;
     ~OrderBook() = default;
     void matchOrder(Order& order);
