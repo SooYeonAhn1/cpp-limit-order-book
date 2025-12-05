@@ -7,7 +7,7 @@
 static std::random_device rd;
 static std::mt19937 gen(rd());
 static std::normal_distribution<> price_dist(100.00, 0.1);
-static std::uniform_int_distribution<long long> qty_dist(1, 1000);
+static std::uniform_int_distribution<long long> qty_dist(5000, 20000);
 
 Order generateRandomOrder(uint32_t id_counter, double mid_price) {
     // decide price
@@ -20,11 +20,11 @@ Order generateRandomOrder(uint32_t id_counter, double mid_price) {
     // decide type of order
     OrderType type = (std::rand() % 2 == 0) ? OrderType::BUY : OrderType::SELL;
 
-    if (std::rand() % 10 == 0) {
+    if (std::rand() % 3 == 0) {
         if (type == OrderType::BUY) {
-            price += 1.00;
+            price += 1000.00;
         } else {
-            price -= 1.00;
+            price -= 1000.00;
         }
     }
 
