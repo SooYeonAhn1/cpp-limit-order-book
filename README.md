@@ -19,6 +19,7 @@ $ cd cpp-limit-order-book
 
 Enter the build directory
 ```
+$ mkdir build
 $ cd build
 ```
 
