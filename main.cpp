@@ -5,6 +5,13 @@
 #include <chrono> // to record benchmarks
 #include <iomanip>
 
+void printDepth(const BookDepth& depth) {
+    std::cout << "\n--- FINAL BOOK STATE ---\n";
+    std::cout << "Bid Levels (Prices): " << depth.bid_price_levels << std::endl;
+    std::cout << "Ask Levels (Prices): " << depth.ask_price_levels << std::endl;
+    std::cout << "Total Resting Volume: " << depth.bid_total_volume + depth.ask_total_volume << std::endl;
+}
+
 void printTradeHistory(const std::vector<Trade>& history, long long total_submitted_quantity) {
     long long total_traded_quantity = 0;
     for (const auto& trade : history) {
@@ -12,10 +19,10 @@ void printTradeHistory(const std::vector<Trade>& history, long long total_submit
     }
 
     double fill_rate = (double)total_traded_quantity / total_submitted_quantity;
-
-    std::cout << "Total Trades Executed: " << history.size() << "\n";
-    std::cout << "Total Quantity Traded: " << total_traded_quantity << "\n";
-    std::cout << "Quantity Fill Rate: " << std::fixed << std::setprecision(2) << fill_rate * 100.0 << "%\n";
+    std::cout << "\n--- TOTAL TRADE HISTORY ---" << std::endl;
+    std::cout << "Total Trades Executed: " << history.size() << std::endl;
+    std::cout << "Total Quantity Traded: " << total_traded_quantity << std::endl;
+    std::cout << "Quantity Fill Rate: " << std::fixed << std::setprecision(2) << fill_rate * 100.0 << "%" << std::endl;
 }
 
 void runBenchmark(uint32_t numOrders) {
@@ -37,17 +44,19 @@ void runBenchmark(uint32_t numOrders) {
     
     double ops_per_second = static_cast<double>(numOrders) / total_seconds;
     
-    std::cout << "\n--- BENCHMARK RESULTS ---\n";
-    std::cout << "Total Operations: " << numOrders << "\n";
+    std::cout << "\n--- BENCHMARK RESULTS ---" << std::endl;
+    std::cout << "Total Operations: " << numOrders << std::endl;
     std::cout << "Total Time: " << std::fixed << std::setprecision(6) 
-              << total_seconds * 1000.0 << " ms\n";
+              << total_seconds * 1000.0 << " ms" << std::endl;
 
     std::cout << "THROUGHPUT: " << std::fixed << std::setprecision(2)
-              << ops_per_second / 1000000.0 << " Million Ops/s\n";
-    std::cout << "--- END ---\n";
+              << ops_per_second / 1000000.0 << " Million Ops/s" << std::endl;
 
     // prints trade history of virtual data
     printTradeHistory(ob.getTradeHistory(), total_submitted_quantity);
+
+    // prints the final book state
+    printDepth(ob.getDepth());
 }
 
 int main() {

@@ -94,3 +94,22 @@ void OrderBook::addOrder(uint32_t id, double price, long long quantity, OrderTyp
         }
     }
 }
+
+BookDepth OrderBook::getDepth() const {
+    BookDepth depth = {};
+    
+    depth.bid_price_levels = bids.size();
+    for (const auto& [price, order_list] : bids) {
+        for (const auto& order : order_list) {
+            depth.bid_total_volume += order.quantity;
+        }
+    }
+    
+    depth.ask_price_levels = asks.size();
+    for (const auto& [price, order_list] : asks) {
+        for (const auto& order : order_list) {
+            depth.ask_total_volume += order.quantity;
+        }
+    }
+    return depth;
+}
