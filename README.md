@@ -8,7 +8,7 @@ This project implements a standard **Price-Time Priority** matching algorithm. I
 ## Key Features
 * **Order Matching:** Real-time matching of Bids and Asks using standard FIFO logic.
 * **Data Structures:** Utilizes `std::map` (Red-Black Tree) for O(log n) price level management and `std::list` for order time priority.
-* **Modern C++:** Implements strict type safety with `enum class` and memory management via smart pointers if necessary.
+* **Modern C++:** Implements strict type safety with `enum class`.
 
 ## Quantitative Benchmark
 
@@ -26,7 +26,7 @@ $ cd cpp-limit-order-book
 
 Enter the build directory
 ```
-$ mkdir build // only needs to be done at initial build
+$ mkdir build # only needs to be done at initial build
 $ cd build
 ```
 
@@ -35,6 +35,13 @@ Run the following commands
 $ cmake ..
 $ make
 $ ./obExec
+```
+
+## Usage
+Upon running the executable, the program will prompt for the simulation size:
+```
+Input the number of operations that you want to run. The number should be a non-negative integer as the input.
+To exit the program, press ctrl-c (command-c for mac).
 ```
 
 ## Sample Output (copy and pasted from terminal)

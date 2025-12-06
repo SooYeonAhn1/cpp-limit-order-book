@@ -60,6 +60,28 @@ void runBenchmark(uint32_t numOrders) {
 }
 
 int main() {
-    runBenchmark(50000);
+    uint64_t operations = 0;
+    std::string input_buffer;
+    while (true) {
+        std::cout << "Input the number of operations that you want to run. The number should be a non-negative integer as the input." << std::endl;
+        std::cout << "To exit the program, press ctrl-c (command-c for mac)." << std::endl;
+        std::getline(std::cin, input_buffer);
+
+        if (input_buffer.empty() || 
+            !std::all_of(input_buffer.begin(), input_buffer.end(), ::isdigit)) {
+            
+            std::cout << "\n[Invalid Input] Please insert a positive integer (no decimals or negatives).\n";
+            continue; // Restart the loop
+        }
+
+        try {
+            operations = std::stoull(input_buffer);
+            break;
+        } catch (...) {
+            std::cout << "\n[Invalid Input] Number is too large.\n";
+        }
+    }
+
+    runBenchmark(operations);
     return 0;
 }
