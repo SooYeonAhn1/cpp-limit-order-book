@@ -37,7 +37,6 @@ $ make
 $ ./obExec
 ```
 
-## Usage
 Upon running the executable, the program will prompt for the simulation size:
 ```
 Input the number of operations that you want to run. The number should be a non-negative integer as the input.
