@@ -9,13 +9,14 @@ This project implements a standard **Price-Time Priority** matching algorithm. I
 * **Order Matching:** Real-time matching of Bids and Asks using standard FIFO logic.
 * **Data Structures:** Utilizes `std::map` (Red-Black Tree) for O(log n) price level management and `std::list` for order time priority.
 * **Modern C++:** Implements strict type safety with `enum class`.
+Design note: std::map was chosen over a hash map because price levels must stay ordered for best-bid/ask lookup; the ordering requirement outweighs the O(1) average lookup a hash map would give.
 
 ## Quantitative Benchmark
 
-The matching engine's performance was measured by processing 50,000 randomly generated, high-volume orders (with 33% aggression chance) on a single thread. The results confirm a high-throughput, accurate implementation.
+The matching engine's performance was measured by processing 5000000 randomly generated, high-volume orders (with 33% aggression chance) on a single thread. The results confirm a high-throughput, accurate implementation.
 
-* **Throughput (Speed):** Achieved a stable **0.93 Million Order Operations/Second**.
-* **Fill Rate (Accuracy):** Maintained a near-perfect **49.84% Quantity Fill Rate**, validating the symmetric Price-Time Priority matching logic against balanced synthetic market data.
+* **Throughput (Speed):** Achieved a stable **3.64 Million Order Operations/Second**.
+* **Fill Rate (Sanity Check):** The **50.00% quantity fill rate** matches the expected value for symmetric synthetic order flow, confirming the matching logic has no directional bias.
 
 ## Running the program
 First clone the repository and change directory to the cloned repository
@@ -44,7 +45,7 @@ To exit the program, press ctrl-c (command-c for mac).
 ```
 
 ## Sample Output (copy and pasted from terminal)
-This is how the output looks when `./obExec` is run on the terminal with 50000 as the input.
+This is how the output looks when `./obExec` is run on the terminal with 5000000 as the input.
 
 ```
 --- BENCHMARK RESULTS ---
