@@ -48,19 +48,19 @@ This is how the output looks when `./obExec` is run on the terminal with 50000 a
 
 ```
 --- BENCHMARK RESULTS ---
-Total Operations: 50000
-Total Time: 53.689445 ms
-THROUGHPUT: 0.93 Million Ops/s
+Total Operations: 5000000
+Total Time: 1373.532569 ms
+THROUGHPUT: 3.64 Million Ops/s
 
 --- TOTAL TRADE HISTORY ---
-Total Trades Executed: 49844
-Total Quantity Traded: 311614075
-Quantity Fill Rate: 49.84%
+Total Trades Executed: 4999614
+Total Quantity Traded: 31244701243
+Quantity Fill Rate: 50.00%
 
 --- FINAL BOOK STATE ---
-Bid Levels (Prices): 27
-Ask Levels (Prices): 3
-Total Resting Volume: 1963878
+Bid Levels (Prices): 28
+Ask Levels (Prices): 1
+Total Resting Volume: 1725325
 ```
 
 ## References
